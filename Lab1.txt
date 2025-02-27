@@ -9,7 +9,7 @@ Three pros of cloud computing are:
     3. Allows for quick restructuring of services as they are all virtual.
 Three cons of cloud computing are:
     1. Internet connection is needed for the services.
-    2. Giant data and cloud centers are bad for the environment.
+    2. Giant data and cloud centres are bad for the environment.
     3. Data and physical machines are not under your control.
 
 3. What is the primary function of a hypervisor in virtualization?
