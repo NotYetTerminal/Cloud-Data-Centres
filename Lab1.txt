@@ -1,0 +1,41 @@
+Lab 1:
+1. Check if your processor supports Intel/AMD virtualization technology. Enable Intel virtualization technology in BIOS if possible. Intel Virtualization Technology enabled.
+
+2. The cloud is almost everywhere in our lives now. What do you think are the fundamental reasons behind its success? Name three pros and three cons of cloud.
+The basic fundamental success is that it is more convenient to have all of the services of a business be managed by an external company that is paid rather than have employees on site manage the services for the business, and another reason is that cloud computing companies services are run either at a loss at first or close to even to help gather customers.
+Three pros of cloud computing are:
+    1. Able to access service from anywhere with internet access.
+    2. Less physical site, and machines needed for service.
+    3. Allows for quick restructuring of services as they are all virtual.
+Three cons of cloud computing are:
+    1. Internet connection is needed for the services.
+    2. Giant data and cloud centers are bad for the environment.
+    3. Data and physical machines are not under your control.
+
+3. What is the primary function of a hypervisor in virtualization?
+The primary function of a hypervisor is to run the virtual machines, by allocating the physical hardware resources and isolating them from the host machine.
+
+4. What is a virtual machine (VM)?
+A virtual machine is a software emulation of a physical computer, the operating system and all the applications on the system.
+
+5. What are the benefits of using virtual machines?
+Benefits of virtual machines include running many different types of operating systems on one base system, which could be a different type of architecture, running many different virtual machines on one single physical server, they can also be used as a secure container and for creating snapshots of systems for quick recovery, for example for development purposes.
+
+6. List five use cases of virtual machines.
+    1. Creating development and testing environments.
+    2. Using as a security sandbox for malware analysis.
+    3. Running a different operating system or legacy software.
+    4. Running many different virtual machines on a single physical server.
+    5. Ability to use cloud computing platforms, example AWS.
+
+7. In virtualization, what is the guest operating system?
+b) The operating system installed on a virtual machine
+
+8. What does virtual machine isolation mean?
+c) Virtual machines run independently and are isolated from each other and the host system.
+
+9. What is the benefit of virtual machine portability?
+c) It allows virtual machines to be moved between different physical machines with compatible hypervisors.
+
+10. What is the purpose of cloning a virtual machine?
+The purpose of cloning is to have a backup of the virtual machine, which could be needed in case the virtual machine is messed up, or to deploy it on multiple machine.
