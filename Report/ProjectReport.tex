@@ -1,0 +1,257 @@
+\documentclass[conference]{IEEEtran}
+% \IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Overview of Chaos Engineering and Chaos Mesh}
+
+\author{\IEEEauthorblockN{Gábor Major}
+\IEEEauthorblockA{\textit{Department of Computing} \\
+\textit{South East Technological University}\\
+Carlow, Ireland \\
+C00271548@setu.ie}
+}
+
+\maketitle
+
+\begin{abstract}
+This document is a model and instructions for \LaTeX.
+This and the IEEEtran.cls file define the components of your paper [title, text, heads, etc.]. *CRITICAL: Do Not Use Symbols, Special Characters, Footnotes, 
+or Math in Paper Title or Abstract.
+\end{abstract}
+
+\begin{IEEEkeywords}
+component, formatting, style, styling, insert
+\end{IEEEkeywords}
+
+\section{Introduction}
+This report has been written for 4\textsuperscript{th} year Software Development Cloud Data Centres module. This report is the end of year project on a chosen cloud computing topic. The focus of this report is on the Chaos Engineering technology, going over the definition and motivation for it as a tool, and an associated program Chaos Mesh, which is a specific tool for testing Kubernetes systems.
+
+\section{Chaos Engineering}
+\subsection{Definition}
+
+Chaos engineering is defined as ``... the practice of intentionally introducing faults into a system in order to test its resilience and ensure applications and engineering teams are able to withstand turbulent and unexpected events.'' by the Cloud Native Computing Foundation. \cite{b1}
+
+It is a testing method where various parts of a system while running in either a production or pre-production environment are turned off or faults are introduced into different components, to test the live resiliency of the various subsections of the whole system.
+
+\subsection{Motivation}
+
+The reason for chaos engineering existing is to help with testing systems that have been deployed and have many different parts working together as one. While traditional software development has black box testing for the methods and functions of a program and white box testing for the program as a whole, the next step is to test the many programs working together.
+
+The purpose of chaos engineering is not to outright make a bulletproof system that is able to withstand a large amount of failures in the system, but instead it is focused on improving the response and recovery process of an organisation or system, and testing realistic stress scenarios. For example, it would not be very helpful to test the system where all the back end servers are simulated as failed, and instead test a more likely scenario like drastically increasing traffic of the service, putting heavy load on the system, giving better feedback on the system's resiliency.
+
+Chaos engineering also allows not just a one-off testing of a system, or a scheduled period of running tests, but also the execution of tests by integrating them into the continuos integration and continuos delivery pipelines. \cite{b2} \\
+This allows projects to have a greater amount of automatic tests running every time a change is made to any of the components of a system. They may not be able to eliminate all problems on deployment, however they filter out common issues such as no backups for a system upon updating the configuration files.
+
+\subsection{History}
+
+The concept of chaos engineering is not new, in 1983 while working on software for the first Apple Macintosh computer a program was created by Steve Capps called ``Monkey'' to test the user interface of the programs, by generating random high speed user input. \\
+Many other companies use some sort of chaos engineering, the most notable being Netflix which regularly conducts failure tests on their production environments. They have developed their own tool called ``Chaos Monkey'' which when ran disables parts of the system to test their resilience. This has changed the mentality of teams at Netflix to take into account that any of their programs may turn offline, which makes sure they always have backup programs. \cite{b3}
+
+\subsection{Types of Experiments}
+
+Chaos engineering tests are also known as chaos engineering experiments. There are many different types of experiments, but the four main categories are as follows:
+\begin{itemize}
+	\item Latency injection: Where network connections between programs are stopped or delays are simulated.
+	\item Fault injection: Where errors are introduced into the system in which one or many components may shut down or malfunction. Errors include software and hardware issues.
+	\item Load generation: Where the system is stress tested using a large amount of traffic beyond the normal levels of operating capacity.
+	\item Canary testing: Where new features are introduced to a small group of users to allow any errors or bugs to occur for only that select few. \cite{b2}
+\end{itemize}
+
+\subsection{Advantages and Disadvantages}
+
+As any other type of technology chaos engineering has some advantages and disadvantages to its use. Overall it is a positive tool to test the resilience and availability of a system offering the following advantages:
+\begin{itemize}
+	\item Allows for better customer satisfaction as the system used by them becomes more resilient and fault-tolerant.
+	\item Improves the security of the system not just by testing for denial of service attempts, but also by speeding up the discovering of vulnerabilities and the patching of bugs.
+	\item Minimise the downtime caused by any disruptions to the system. As a result of testing many different scenarios of faults people will be more informed of the issues that may occur and have response or recovery plans in place for quickly remedying faults.
+	\item Increases the ability to upgrade, extend and maintain the system. Experiments allow people to gauge what resources are used, and how the system functions in low and high times of use. These experiments also encourage documenting the system's quirks and edge cases for other people who may later work on the system.
+\end{itemize}
+There are however a few disadvantages to using chaos engineering as a tool for testing the resilience of systems:
+\begin{itemize}
+	\item Has a high upfront cost for a large system. Running chaos experiments on a large and previously untested programs will cause a lot of faults to be discovered at the start of testing which may not bring back noticeable returns straight away. 
+	\item Has a higher maintenance cost with not just the constant executing of experiments but also the running of redundant programs to deal with the potential issues.
+	\item May require a shift in mentality for people working on the system and potential rewrite of some programs.
+	\item Incorrectly running experiments on production environments may lead to unwanted downtime for customers if new unaccounted faults are found. \cite{b2}
+\end{itemize}
+
+\section{Prepare Your Paper Before Styling}
+Before you begin to format your paper, first write and save the content as a 
+separate text file. Complete all content and organizational editing before 
+formatting. Please note sections \ref{AA}--\ref{SCM} below for more information on 
+proofreading, spelling and grammar.
+
+Keep your text and graphic files separate until after the text has been 
+formatted and styled. Do not number text heads---{\LaTeX} will do that 
+for you.
+
+\subsection{Abbreviations and Acronyms}\label{AA}
+Define abbreviations and acronyms the first time they are used in the text, 
+even after they have been defined in the abstract. Abbreviations such as 
+IEEE, SI, MKS, CGS, ac, dc, and rms do not have to be defined. Do not use 
+abbreviations in the title or heads unless they are unavoidable.
+
+\subsection{Units}
+\begin{itemize}
+\item Use either SI (MKS) or CGS as primary units. (SI units are encouraged.) English units may be used as secondary units (in parentheses). An exception would be the use of English units as identifiers in trade, such as ``3.5-inch disk drive''.
+\item Avoid combining SI and CGS units, such as current in amperes and magnetic field in oersteds. This often leads to confusion because equations do not balance dimensionally. If you must use mixed units, clearly state the units for each quantity that you use in an equation.
+\item Do not mix complete spellings and abbreviations of units: ``Wb/m\textsuperscript{2}'' or ``webers per square meter'', not ``webers/m\textsuperscript{2}''. Spell out units when they appear in text: ``. . . a few henries'', not ``. . . a few H''.
+\item Use a zero before decimal points: ``0.25'', not ``.25''. Use ``cm\textsuperscript{3}'', not ``cc''.)
+\end{itemize}
+
+\subsection{Equations}
+Number equations consecutively. To make your 
+equations more compact, you may use the solidus (~/~), the exp function, or 
+appropriate exponents. Italicize Roman symbols for quantities and variables, 
+but not Greek symbols. Use a long dash rather than a hyphen for a minus 
+sign. Punctuate equations with commas or periods when they are part of a 
+sentence, as in:
+\begin{equation}
+a+b=\gamma\label{eq}
+\end{equation}
+
+Be sure that the 
+symbols in your equation have been defined before or immediately following 
+the equation. Use ``\eqref{eq}'', not ``Eq.~\eqref{eq}'' or ``equation \eqref{eq}'', except at 
+the beginning of a sentence: ``Equation \eqref{eq} is . . .''
+
+\subsection{\LaTeX-Specific Advice}
+
+Please use ``soft'' (e.g., \verb|\eqref{Eq}|) cross references instead
+of ``hard'' references (e.g., \verb|(1)|). That will make it possible
+to combine sections, add equations, or change the order of figures or
+citations without having to go through the file line by line.
+
+Please don't use the \verb|{eqnarray}| equation environment. Use
+\verb|{align}| or \verb|{IEEEeqnarray}| instead. The \verb|{eqnarray}|
+environment leaves unsightly spaces around relation symbols.
+
+Please note that the \verb|{subequations}| environment in {\LaTeX}
+will increment the main equation counter even when there are no
+equation numbers displayed. If you forget that, you might write an
+article in which the equation numbers skip from (17) to (20), causing
+the copy editors to wonder if you've discovered a new method of
+counting.
+
+{\BibTeX} does not work by magic. It doesn't get the bibliographic
+data from thin air but from .bib files. If you use {\BibTeX} to produce a
+bibliography you must send the .bib files. 
+
+{\LaTeX} can't read your mind. If you assign the same label to a
+subsubsection and a table, you might find that Table I has been cross
+referenced as Table IV-B3. 
+
+{\LaTeX} does not have precognitive abilities. If you put a
+\verb|\label| command before the command that updates the counter it's
+supposed to be using, the label will pick up the last counter to be
+cross referenced instead. In particular, a \verb|\label| command
+should not go before the caption of a figure or a table.
+
+Do not use \verb|\nonumber| inside the \verb|{array}| environment. It
+will not stop equation numbers inside \verb|{array}| (there won't be
+any anyway) and it might stop a wanted equation number in the
+surrounding equation.
+
+\subsection{Some Common Mistakes}\label{SCM}
+\begin{itemize}
+\item The word ``data'' is plural, not singular.
+\item The subscript for the permeability of vacuum $\mu_{0}$, and other common scientific constants, is zero with subscript formatting, not a lowercase letter ``o''.
+\item In American English, commas, semicolons, periods, question and exclamation marks are located within quotation marks only when a complete thought or name is cited, such as a title or full quotation. When quotation marks are used, instead of a bold or italic typeface, to highlight a word or phrase, punctuation should appear outside of the quotation marks. A parenthetical phrase or statement at the end of a sentence is punctuated outside of the closing parenthesis (like this). (A parenthetical sentence is punctuated within the parentheses.)
+\item A graph within a graph is an ``inset'', not an ``insert''. The word alternatively is preferred to the word ``alternately'' (unless you really mean something that alternates).
+\item Do not use the word ``essentially'' to mean ``approximately'' or ``effectively''.
+\item In your paper title, if the words ``that uses'' can accurately replace the word ``using'', capitalize the ``u''; if not, keep using lower-cased.
+\item Be aware of the different meanings of the homophones ``affect'' and ``effect'', ``complement'' and ``compliment'', ``discreet'' and ``discrete'', ``principal'' and ``principle''.
+\item Do not confuse ``imply'' and ``infer''.
+\item The prefix ``non'' is not a word; it should be joined to the word it modifies, usually without a hyphen.
+\item There is no period after the ``et'' in the Latin abbreviation ``et al.''.
+\item The abbreviation ``i.e.'' means ``that is'', and the abbreviation ``e.g.'' means ``for example''.
+\end{itemize}
+An excellent style manual for science writers is \cite{b7}.
+
+\subsection{Authors and Affiliations}
+\textbf{The class file is designed for, but not limited to, six authors.} A 
+minimum of one author is required for all conference articles. Author names 
+should be listed starting from left to right and then moving down to the 
+next line. This is the author sequence that will be used in future citations 
+and by indexing services. Names should not be listed in columns nor group by 
+affiliation. Please keep your affiliations as succinct as possible (for 
+example, do not differentiate among departments of the same organization).
+
+\subsection{Identify the Headings}
+Headings, or heads, are organizational devices that guide the reader through 
+your paper. There are two types: component heads and text heads.
+
+Component heads identify the different components of your paper and are not 
+topically subordinate to each other. Examples include Acknowledgments and 
+References and, for these, the correct style to use is ``Heading 5''. Use 
+``figure caption'' for your Figure captions, and ``table head'' for your 
+table title. Run-in heads, such as ``Abstract'', will require you to apply a 
+style (in this case, italic) in addition to the style provided by the drop 
+down menu to differentiate the head from the text.
+
+Text heads organize the topics on a relational, hierarchical basis. For 
+example, the paper title is the primary text head because all subsequent 
+material relates and elaborates on this one topic. If there are two or more 
+sub-topics, the next level head (uppercase Roman numerals) should be used 
+and, conversely, if there are not at least two sub-topics, then no subheads 
+should be introduced.
+
+\subsection{Figures and Tables}
+\paragraph{Positioning Figures and Tables} Place figures and tables at the top and 
+bottom of columns. Avoid placing them in the middle of columns. Large 
+figures and tables may span across both columns. Figure captions should be 
+below the figures; table heads should appear above the tables. Insert 
+figures and tables after they are cited in the text. Use the abbreviation 
+``Fig.~\ref{fig}'', even at the beginning of a sentence.
+
+\begin{table}[htbp]
+\caption{Table Type Styles}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Table}&\multicolumn{3}{|c|}{\textbf{Table Column Head}} \\
+\cline{2-4} 
+\textbf{Head} & \textbf{\textit{Table column subhead}}& \textbf{\textit{Subhead}}& \textbf{\textit{Subhead}} \\
+\hline
+copy& More table copy$^{\mathrm{a}}$& &  \\
+\hline
+\multicolumn{4}{l}{$^{\mathrm{a}}$Sample of a Table footnote.}
+\end{tabular}
+\label{tab1}
+\end{center}
+\end{table}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics{fig1.png}}
+\caption{Example of a figure caption.}
+\label{fig}
+\end{figure}
+
+Figure Labels: Use 8 point Times New Roman for Figure labels. Use words 
+rather than symbols or abbreviations when writing Figure axis labels to 
+avoid confusing the reader. As an example, write the quantity 
+``Magnetization'', or ``Magnetization, M'', not just ``M''. If including 
+units in the label, present them within parentheses. Do not label axes only 
+with units. In the example, write ``Magnetization (A/m)'' or ``Magnetization 
+\{A[m(1)]\}'', not just ``A/m''. Do not label axes with a ratio of 
+quantities and units. For example, write ``Temperature (K)'', not 
+``Temperature/K''.
+
+\begin{thebibliography}{00}
+\bibitem{b1} Cloud Native Computing Foundation,  ``Chaos Engineering'',  2024,  https://landscape.cncf.io/guide\#observability-and-analysis--chaos-engineering
+
+\bibitem{b2} IBM, ``What is chaos engineering?'', 3 August 2023,  https://www.ibm.com/think/topics/chaos-engineering
+
+\bibitem{b3} Wikipedia, ``Chaos engineering'', 27 September 2024, https://en.wikipedia.org/wiki/Chaos\_engineering
+
+\end{thebibliography}
+
+\end{document}
